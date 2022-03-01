@@ -14,6 +14,7 @@ const Login = () => {
       ...prevState,
       [e.target.name]: e.target.value,
     }));
+    console.log({[e.target.name]: e.target.value},)
   };
   const dispatch = useDispatch();
   useEffect(() => {
@@ -21,23 +22,24 @@ const Login = () => {
       notification.error({  message: "Error", description: message, });
     }
     if (isSuccess) {
-      notification.success({  message: "Success", description: message?.message,  });
-      setTimeout(() => {
-        navigate("/profile");
-      }, 2000);
+      notification.success({  message: "Bienvenido", description: message?.message,  });
+     
     }
+    
     dispatch(reset())
   }, [isError, isSuccess, message, navigate, dispatch]);
+
   const onSubmit = (e) => {
     e.preventDefault();
     dispatch(login(formData));
+    setTimeout(() => {
+      navigate("/profile");
+    }, 2000);
   };
-
-
     return(
         <form onSubmit={onSubmit}>
-            <input type="email" value={email} onChange={onChange}/>
-            <input type="password" value={password} onChange={onChange}/>
+            <input type="email" name="email" value={email} onChange={onChange}/>
+            <input type="password" name="password" value={password} onChange={onChange}/>
             <button type="submit">Login</button>
         </form>
     )

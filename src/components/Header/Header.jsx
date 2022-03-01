@@ -9,7 +9,7 @@ const Header = () =>{
     const onLogout = (event) =>{
         event.preventDefault();
         dispatch(logout());
-        navigate("/");
+        navigate("/login");
     };
     return(
         <nav>
@@ -22,10 +22,11 @@ const Header = () =>{
         </>
         :
         <>
-        <span><Link to ="/login">Login</Link></span>
+        <span><Link to ="/login">Login </Link></span>
         <span><Link to="/Register">Register</Link></span>
         </>
-            }
+            }   
+        {user?.rol === 'admin' ? <span><Link to="/admin">Admin</Link></span>:''}
         </div>
         </nav>
     );

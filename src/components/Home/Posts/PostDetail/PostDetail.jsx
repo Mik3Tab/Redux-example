@@ -1,9 +1,8 @@
-
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getById } from "../../../../features/posts/postSlice";
+import { getById } from "../../../../features/posts/postsSlice";
 
 const PostDetail = () => {
   const { id } = useParams();
@@ -15,7 +14,7 @@ const PostDetail = () => {
 
   return (
     <div>
-      <h1>PostDetail</h1>
+      <h1>Post Detail</h1>
       <p>{post.title}</p>
       <p>{post.body}</p>
     </div>

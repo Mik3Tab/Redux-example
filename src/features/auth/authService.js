@@ -2,9 +2,12 @@ import axios from 'axios';
 const API_URL = "http://localhost:3001";
 
 const register = async (userData) =>{
-    console.log('eee')
-    const res = await axios.post(API_URL + '/users/register', userData);
-    return res.data;
+    try{
+        const res = await axios.post(API_URL + '/users/register', userData);
+        return res.data;
+    }catch(error){
+        console.error(error);
+    }
 };
 
 const login = async(userData) =>{

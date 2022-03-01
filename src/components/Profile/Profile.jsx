@@ -5,8 +5,9 @@ const Profile = () =>{
 return (
     <div>
         <h1>Profile</h1>
-        <p>{user.user.name}</p>
+        <div>
         <p>{user.user.email}</p>
+        </div>
     </div>
     );
 };

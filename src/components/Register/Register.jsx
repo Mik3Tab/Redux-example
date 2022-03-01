@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import {register,reset} from '../../features/auth/authSlice'
 import { notification } from "antd";
 import { useNavigate } from "react-router-dom";
-
 import "antd/dist/antd.css";
+
 const Register = () => {
     const [formData, setFormData] = useState({ name: "",email: "",password: "",password2: "", });
     const { name, email, password, password2 } = formData;
@@ -35,18 +35,22 @@ const Register = () => {
         if (password !== password2) {
           return notification.error({
             message: "Error",
-            description: "Passwords do not match",
+            description: "Las contraseñas no coinciden",
           });
         } else {
-            dispatch(register(formData));
+          dispatch(register(formData));
+          navigate("/login");
+          return notification.success({message: "Registro realizado con éxito", description: message?.message});
         }
       };
     
     return(
+
         <form onSubmit={onSubmit}>
             <input type="text" name="name" placeholder="name" value={name} onChange={onChange}/>
             <input type="email" name="email" placeholder="email" value={email} onChange={onChange}/>
             <input type="password" name="password" placeholder="password" value={password} onChange={onChange}/>
+            <input type="password" name="password2" placeholder="password2" vaue={password2} onChange={onChange}/>
             <button type="submit" >Register</button>
         </form>
     )
